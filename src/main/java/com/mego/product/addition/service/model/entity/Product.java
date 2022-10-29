@@ -29,4 +29,7 @@ public class Product {
     @Column(name = "kcal", nullable = false)
     private int kcal;
 
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "list_id")
+    private List listId;
 }
