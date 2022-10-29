@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    driverClassName: com.postgresql.cj.jdbc.Driver
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USER}
+    password: ${DATABASE_PASS}
+
+  jpa:
+    database-platform: org.hibernate.dialect.postgresqldialect
+    hibernate:
+      ddl-auto: validate
