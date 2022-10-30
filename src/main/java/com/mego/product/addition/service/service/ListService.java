@@ -3,7 +3,6 @@ package com.mego.product.addition.service.service;
 import com.mego.product.addition.service.api.request.ListRequest;
 import com.mego.product.addition.service.api.response.ErrorResponse;
 import com.mego.product.addition.service.model.entity.List;
-import com.mego.product.addition.service.model.entity.Product;
 import com.mego.product.addition.service.model.repository.ListRepository;
 import com.mego.product.addition.service.model.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;

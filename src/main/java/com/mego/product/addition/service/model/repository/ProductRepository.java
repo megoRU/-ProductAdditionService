@@ -19,7 +19,4 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     @Query(value = "SELECT SUM(p.kcal) AS totalAmount, p AS products FROM Product p WHERE p.listId.id = :id GROUP BY p.id")
     List<ProductImpl> getProductsByListId(@NonNull Long id);
-
-//    @Query(value = "SELECT p AS products FROM Product p WHERE p.listId.id = :id GROUP BY p.id")
-//    List<Product> getProductsByListId(@NonNull Long id);
 }
