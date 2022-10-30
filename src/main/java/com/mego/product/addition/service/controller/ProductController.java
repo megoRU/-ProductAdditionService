@@ -27,4 +27,14 @@ public class ProductController {
     private ResponseEntity<?> productToList(@RequestBody ProductToList productToList) {
         return productService.update(productToList);
     }
+
+    @GetMapping("")
+    private ResponseEntity<?> getProduct(@RequestParam(name = "id", required = false) String id) {
+        return productService.get(id);
+    }
+
+    @GetMapping("/list")
+    private ResponseEntity<?> getAllProductByListId(@RequestParam String id) {
+        return productService.getAllProducts(id);
+    }
 }
