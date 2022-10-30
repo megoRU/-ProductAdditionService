@@ -1,6 +1,7 @@
 package com.mego.product.addition.service.model.repository;
 
 import com.mego.product.addition.service.model.entity.Product;
+import com.mego.product.addition.service.model.repository.impl.ProductImpl;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.lang.NonNull;

@@ -1,4 +1,4 @@
-package com.mego.product.addition.service.model.repository;
+package com.mego.product.addition.service.model.repository.impl;
 
 import com.mego.product.addition.service.model.entity.Product;
 

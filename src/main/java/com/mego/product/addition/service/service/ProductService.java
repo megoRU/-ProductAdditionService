@@ -8,7 +8,7 @@ import com.mego.product.addition.service.api.response.ListOfProducts;
 import com.mego.product.addition.service.model.entity.List;
 import com.mego.product.addition.service.model.entity.Product;
 import com.mego.product.addition.service.model.repository.ListRepository;
-import com.mego.product.addition.service.model.repository.ProductImpl;
+import com.mego.product.addition.service.model.repository.impl.ProductImpl;
 import com.mego.product.addition.service.model.repository.ProductRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class ProductService {
