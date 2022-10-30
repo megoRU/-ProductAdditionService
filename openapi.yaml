@@ -1,0 +1,360 @@
+swagger: '2.0'
+info:
+  description: Api Documentation
+  version: '1.0'
+  title: Api Documentation
+host: localhost:8080
+basePath: /
+tags:
+  - name: list-controller
+    description: List Controller
+  - name: product-controller
+    description: Product Controller
+paths:
+  /api/v1/list:
+    get:
+      tags:
+        - list-controller
+      summary: getList
+      operationId: getListUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: query
+          description: id
+          required: false
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+             id:
+                  type: integer
+                  description: "id"
+                  example: 1
+             name:
+                  type: string
+                  description: name
+                  example: Продукты
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+          schema:
+            type: object
+            properties:
+              error:
+                  type: string
+                  description: "Error description"
+                  example: "List not found"
+              error_description: 
+                  type: string
+                  description: "Error description"
+                  example: "List not found"
+    post:
+      tags:
+        - list-controller
+      summary: createList
+      operationId: createListUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: listRequest
+          description: listRequest
+          required: true
+          schema:
+            $ref: '#/definitions/ListRequest'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: integer
+            example: 1
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+          schema:
+            type: object
+            properties:
+              error:
+                  type: string
+                  description: "Error description"
+                  example: "name is null"
+              error_description: 
+                  type: string
+                  description: "Error description"
+                  example: "name can`t be null"
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /api/v1/product:
+    get:
+      tags:
+        - product-controller
+      summary: getProduct
+      operationId: getProductUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: query
+          description: id
+          required: false
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+             id:
+                  type: integer
+                  description: "id"
+                  example: 1
+             name:
+                  type: string
+                  description: name
+                  example: Продукты
+             description:
+                  type: string
+                  description: description
+                  example: Это чипсы лейс
+             kcal:
+                  type: integer
+                  description: kcal
+                  example: 200
+             listId:
+                  type: object
+                  properties:
+                    id:
+                       type: integer
+                       description: "id"
+                       example: 1
+                    name:
+                      type: string
+                      description: name
+                      example: Продукты 
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+          schema:
+            type: object
+            properties:
+              error:
+                  type: string
+                  description: "Error description"
+                  example: "Product not found"
+              error_description: 
+                  type: string
+                  description: "Error description"
+                  example: "Product not found"
+    post:
+      tags:
+        - product-controller
+      summary: createProduct
+      operationId: createProductUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: productRequest
+          description: productRequest
+          required: true
+          schema:
+            $ref: '#/definitions/ProductRequest'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: integer
+            example: 1
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+          schema:
+            type: object
+            properties:
+              error:
+                  type: string
+                  description: "Error description"
+                  example: "name or description is null"
+              error_description: 
+                  type: string
+                  description: "Error description"
+                  example: "name or description can`t be null"
+    put:
+      tags:
+        - product-controller
+      summary: productToList
+      operationId: productToListUsingPUT
+      consumes:
+        - application/json
+      produces:
+        - '*/*'
+      parameters:
+        - in: body
+          name: productToList
+          description: productToList
+          required: true
+          schema:
+            $ref: '#/definitions/ProductToList'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+             id:
+                  type: integer
+                  description: "id"
+                  example: 1
+             name:
+                  type: string
+                  description: name
+                  example: Продукты
+             description:
+                  type: string
+                  description: description
+                  example: Это чипсы лейс
+             kcal:
+                  type: integer
+                  description: kcal
+                  example: 200
+             listId:
+                  type: object
+                  properties:
+                    id:
+                       type: integer
+                       description: "id"
+                       example: 1
+                    name:
+                      type: string
+                      description: name
+                      example: Продукты 
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+          schema:
+            type: object
+            properties:
+              error:
+                  type: string
+                  description: "Error description"
+                  example: "List not found"
+              error_description: 
+                  type: string
+                  description: "Error description"
+                  example: "List not found"
+  /api/v1/product/list:
+    get:
+      tags:
+        - product-controller
+      summary: getAllProductByListId
+      operationId: getAllProductByListIdUsingGET
+      produces:
+        - '*/*'
+      parameters:
+        - name: id
+          in: query
+          description: id
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              totalAmountKcal:
+                type: integer
+              
+              products:
+                  type: array
+                  items:
+                     type: object
+                     properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: Чипсы
+                        description:
+                           type: string
+                           example: Это чипсы лейс
+                        kcal:
+                          type: integer
+                          example: 200
+                          
+                        listId:
+                          type: object
+                          properties:
+                           id:
+                             type: integer
+                             description: "id"
+                             example: 1
+                           name:
+                             type: string
+                             description: name
+                             example: Продукты   
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+definitions:
+  ListRequest:
+    type: object
+    properties:
+      name:
+        type: string
+    title: ListRequest
+  ProductRequest:
+    type: object
+    properties:
+      description:
+        type: string
+      kcal:
+        type: integer
+        format: int32
+      list_id:
+        type: string
+      name:
+        type: string
+    title: ProductRequest
+  ProductToList:
+    type: object
+    properties:
+      list_id:
+        type: integer
+        format: int64
+      product_id:
+        type: integer
+        format: int64
+    title: ProductToList

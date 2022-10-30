@@ -29,7 +29,8 @@ public class ProductService {
     }
 
     public ResponseEntity<?> create(ProductRequest productRequest) {
-        if (productRequest.getDescription() == null || productRequest.getName() == null) {
+        if (productRequest.getDescription() == null || productRequest.getName() == null
+                || productRequest.getName().equals("") || productRequest.getDescription().equals("")) {
             return new ResponseEntity<>(new ErrorResponse(
                     "name or description is null",
                     "name or description can`t be null"), HttpStatus.BAD_REQUEST);
